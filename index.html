@@ -150,112 +150,108 @@
     <section><!-- End Why Us Section -->
       <div class=" ui container">
         <div class="ui two column grid">
-     <div class="column">
-                <div class="offerbar">
-                    <div class="formarea">
-                        <div class="title">Compare & Calculate Your Premium</div>
-                        <!--<form>-->
-                            <div class="ui fluid card centered card">
-                        <div class="inputbox">
+          <div class="col-6">
+            <div class="offerbar" ng-cloak>
+                <div class=formarea ng-cloak>
+                    <div class="title">Compare & Calculate Your Premium</div>
+                    <form>
+                    <div class=inputbox ng-cloak>
+                        <div class="inputbx namefield" ng-cloak>
+                            <div class=inputGroup ng-cloak>
+                      
+                                <select class="ui fluid search selection dropdown "  tabindex=1 required="" ng-model="termDetails.income" type="text" ng-change="validation('income')">
+                      
+                                  <option value="">Annual Income </option>
+                                    <option ng-repeat="item in annualIncomeList" value="{{item.value}}">{{item.text}}</option>
 
-                            <div class="inputbx namefield">
-                                <div class="inputGroup">
-
-                                    <select class="ui fluid search selection dropdown " tabindex=1 required="" ng-model="termDetails.income" ng-change="validation('income')" label="annual income
-                                    ">
-
-                                        <option value="">Annual Income</option>
-                                        <option ng-repeat="item in annualIncomeList" value="{{item.value}}">{{item.text}}</option>
-
-                                    </select>
-                                </div>
-                                <span class="error" ng-show="errors.income">{{errors.incomeMessage}}</span>
+                                </select>
                             </div>
-                            <div class="inputbx namefield">
-                                <div class="inputGroup">
-                                    <select class="ui fluid search selection dropdown " tabindex=1 required="" ng-model="termDetails.age" ng-change="validation('age')">
-                                        <option value="">Age</option>
-                                        <option ng-repeat="item in ageList" value="{{item.value}}">{{item.text}}</option>
-
-                                    </select>
-                                    <span class="error" ng-show="errors.age">{{errors.ageMessage}}</span>
-                                </div>
-                            </div>
-                            <div class="inputbx namefield">
-                                <div class="inputGroup">
-                                    <input class="inputEffect" type="tel" maxlength="10" numbers-only ng-model="termDetails.mobile" ng-blur="validation('mobile')" required>
-                                    <label>Mobile </label>
-                                    <span class="error" ng-show="errors.mobile">{{errors.mobileMessage}}</span>
-                                </div>
-                            </div>
-
-                            <div class="inputbx namefield">
-                                <div class="inputGroup">
-                                    <select class="ui fluid search selection dropdown " tabindex=1 required="" ng-model="termDetails.city" ng-change="validation('city')">
-                                        <option value="">City</option>
-                                        <option ng-repeat="item in cityList" value="{{item.CityId}}">{{item.CityStateName}}</option>
-
-                                    </select>
-                                    <span class="error" ng-show="errors.city">{{errors.cityMessage}}</span>
-                                </div>
-                            </div>
-
+                            <span class="error" ng-cloak ng-show="errors.income">{{errors.incomeMessage}}</span>
                         </div>
-                        <div class="inputbx btn align-center">
-                            <button ng-click="gettermcontinuepop('aicm')" class="viewQuotes" ng-disabled="showbtnleadloader">
-                                <span ng-show="showbtnleadloader"><i class="load fa fa-spin"></i> Loading</span>
-                                <span ng-show="!showbtnleadloader"> Get Live Quotes </span>
-                            </button>
-                            <p class="condition">We respect your privacy and we hate spam calls as much as you do. We will communicate with you only to help you in choosing the right insurance policy.</p>
+                        <div class="inputbx namefield" ng-cloak>
+                            <div class=inputGroup ng-cloak>
+                                <select class="ui fluid search selection dropdown " tabindex=1 required="" ng-model="termDetails.age" ng-change="validation('age')">
+                                    <option value="">Age</option>
+                                    <option ng-repeat="item in ageList" value="{{item.value}}">{{item.text}}</option>
+
+                                </select>
+                                <span class="error" ng-cloak ng-show="errors.age">{{errors.ageMessage}}</span>
+                            </div>
                         </div>
+                        <div class="inputbx namefield" ng-cloak>
+                            <!--<div class="formlable">City</div>-->
+                            <div class=inputGroup ng-cloak>
+                                <select class="ui fluid search selection dropdown" ng-cloak tabindex=1 required="" ng-model="termDetails.city" ng-change="validation('city')">
+                                    <option value="">City</option>
+                                    <option ng-repeat="item in commoncitystate" value="{{item.cityid}}">{{item.cityname}}</option>
+
+                                </select>
+                                <span class="error" ng-cloak ng-show="errors.city">{{errors.cityMessage}}</span>
+                            </div>
+                        </div>
+                        <div class="inputbx namefield" ng-cloak>
+                            <div class=inputGroup ng-cloak>
+                                <input class=inputEffect type=tel maxlength="10" numbers-only ng-model="termDetails.mobile" ng-blur="validation('mobile')" required>
+                                <label>Mobile </label>
+                                <span class="error" ng-cloak ng-show="errors.mobile">{{errors.mobileMessage}}</span>
+                            </div>
+                        </div>
+
                     </div>
-                        <!--</form>-->
-                        <div class="popupWindow animated fadeIn " ng-show="otpPopup">
-                            <div class="row innerContent py-4 px-3" ng-show="otpMobile">
-                                <div class="col-12 text-center">
-                                    <a ng-click="otpPopup=false;" class="cross crossOTPButton"></a>
-                                    <h4 class="text-uppercase align-center">One Time Password</h4>
-                                    <p id="otpMsg " class="align-center">{{otpText}}</p>
-                                    <p class="orange align-center">+91- <span id="otpSentMobile">{{termDetails.mobile}}</span> <a ng-click="otpMobile=false;updateMobile=true;" id="editMobile" class="p-2 editno"><i class="fa fa-pencil-square-o"></i> Edit</a></p>
-                                </div>
-                                <div class="col-12 align-center">
-                                    <form name="verifyOTPForm" id="verifyOTPForm">
-                                        <div class="inputbx namefield">
-                                            <input name="receivedOTP" placeholder="Enter OTP" minlength="4" maxlength="4" numbers-only class="inputGroup " ng-model="userOTP">
-                                            <span class="error" ng-show="wrongotpmsgshow">{{wrongotpmsg}}</span>
-                                        </div>
-                                    </form>
-                                    <button ng-click="leadcreationfn7()" class="viewQuotes" ng-disabled="otpLoader">
-                                        <span ng-show="otpLoader"><i class="load fa fa-spin"></i> Loading</span>
-                                        <span ng-show="!otpLoader">Verify</span>
-                                    </button>
-                                    <p class="mt-4">Didn’t receive OTP? <a ng-click="otpFn(2)" id="resendOTP" class="p-2 editno">Resend...</a></p>
-                                </div>
+                    <div class="inputbx btn align-center" ng-cloak>
+                        <button ng-click="gettermcontinuepop()" class="viewQuotes" ng-disabled="showbtnleadloader">
+                            <span ng-cloak ng-show="showbtnleadloader"><i class="load fa fa-spin"></i> Loading</span>
+                            <span ng-cloak ng-show="!showbtnleadloader"> Get Live Quotes </span>
+                        </button>
+                        <p class=condition>We respect your privacy and we hate spam calls as much as you do. We will communicate with you only to help you in choosing the right insurance policy.</p>
+                    </div>
+                    </form>
+                    <div class="popupWindow animated fadeIn " ng-cloak ng-show="otpPopup" ng-cloak>
+                        <div class="row innerContent py-4 px-3" ng-show="otpMobile" ng-cloak>
+                            <div class="col-12 text-center" ng-cloak>
+                                <a ng-click="otpPopup=false;" class="cross crossOTPButton"></a>
+                                <h4 class="text-uppercase align-center">One Time Password</h4>
+                                <p id="otpMsg " class=align-center>{{otpText}}</p>
+                                <p class="orange align-center">+91- <span id=otpSentMobile>{{termDetails.mobile}}</span> <a ng-click="otpMobile=false;updateMobile=true;" id=editMobile class="p-2 editno"><i class="fa fa-pencil-square-o"></i> Edit</a></p>
                             </div>
-                            <div class="row innerContent py-4 px-3" id="updateMobileSection" ng-show="updateMobile">
-                                <div class="col-12 text-center">
-                                    <a ng-click="updateMobile=false;otpMobile=true;" class="cross crossOTPButton"></a>
-                                    <h4 class="text-uppercase align-center">Enter Your Mobile Number</h4>
-                                </div>
-                                <div class="col-12 align-center">
-                                    <!--<form name=updateMobileForm id=updateMobileForm>-->
-                                    <div class="inputbx namefield">
-                                        <input name="newMobile" id="newMobile" placeholder="Mobile no." ng-model="termDetails.newMobile" numbers-only maxlength="10" class="inputGroup " ng-blur="validation('newmobile')">
-                                        <span class="error " ng-show="errors.newMobile">{{errors.newMobileMessage}}</span>
+                            <div class="col-12 align-center" ng-cloak>
+                                <form name=verifyOTPForm id=verifyOTPForm ng-cloak>
+                                    <div class="inputbx namefield" ng-cloak>
+                                        <input name=receivedOTP placeholder="Enter OTP" minlength="4" maxlength="4" numbers-only class="inputGroup " ng-model="userOTP">
+                                        <span class="error" ng-cloak ng-show="wrongotpmsgshow">{{wrongotpmsg}}</span>
                                     </div>
-                                    <!--</form>-->
-
-                                    <button ng-click="updateMobileNumber()" class="viewQuotes" ng-disabled="updateLoader">
-                                        <span ng-show="updateLoader"><i class=" load fa fa-spin"></i> Loading</span>
-                                        <span ng-show="!updateLoader">Update</span>
-                                    </button>
+                                </form>
+                                <button ng-click="leadcreationfn7()" class="viewQuotes" ng-disabled="otpLoader" ng-cloak>
+                                    <span ng-cloak ng-show="otpLoader" ng-cloak><i class="load fa fa-spin"></i> Loading</span>
+                                    <span ng-cloak ng-show="!otpLoader" ng-cloak>Verify</span>
+                                </button>
+                                <p class=mt-4>Didn’t receive OTP? <a ng-click="otpFn(2)" id=resendOTP class="p-2 editno">Resend...</a></p>
+                            </div>
+                        </div>
+                        <div class="row innerContent py-4 px-3" id=updateMobileSection ng-cloak ng-show="updateMobile" ng-cloak>
+                            <div class="col-12 text-center" ng-cloak>
+                                <a ng-click="updateMobile=false;otpMobile=true;" class="cross crossOTPButton" ng-cloak></a>
+                                <h4 class="text-uppercase align-center" ng-cloak>Enter Your Mobile Number</h4>
+                            </div>
+                            <div class="col-12 align-center" ng-cloak>
+                                <!--<form name=updateMobileForm id=updateMobileForm>-->
+                                <div class="inputbx namefield">
+                                    <input name=newMobile id=newMobile placeholder="Mobile no." ng-model="termDetails.newMobile" numbers-only maxlength="10" class="inputGroup " ng-blur="validation('newmobile')">
+                                    <span class="error " ng-cloak ng-show="errors.newMobile">{{errors.newMobileMessage}}</span>
                                 </div>
+                                <!--</form>-->
+
+                                <button ng-click="updateMobileNumber()" class="viewQuotes" ng-disabled="updateLoader" ng-cloak>
+                                    <span ng-cloak ng-show="updateLoader" ng-cloak><i class=" load fa fa-spin"></i> Loading</span>
+                                    <span ng-cloak ng-show="!updateLoader" ng-cloak>Update</span>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="clear-fix"></div>
                 </div>
+                <div class=clear-fix></div>
             </div>
+        </div>
      <div class="column">
        <img class="ui fluid  image" src="assets/img/term4.png">
      </div>
